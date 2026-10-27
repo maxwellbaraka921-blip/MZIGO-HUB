@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mzigo Hub | Find a truck for your load in East Africa</title>
+  <meta name="description" content="Post your cargo, get offers from verified truck owners, and pay by mobile money held until delivery. Mzigo Hub connects shippers and truck owners across Kenya, Uganda, Rwanda and Tanzania.">
+  <meta name="theme-color" content="#0e5c3f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mzigo Hub | Every load finds a truck">
+  <meta property="og:description" content="Post cargo, get offers from verified truck owners, pay by mobile money held until delivery.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Mzigo Hub, back to top">
+        <img src="assets/logo-mark.svg" width="38" height="38" alt="">
+        <span class="brand-name">Mzigo Hub</span>
+        <span class="brand-country" data-country-name>Kenya</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#loads">Load board</a>
+        <a href="#owners">Truck owners</a>
+        <a href="#routes">Routes</a>
+      </nav>
+      <div class="header-actions">
+        <label class="visually-hidden" for="country">Country</label>
+        <select id="country" class="select-compact" autocomplete="off">
+          <option value="KE">Kenya</option>
+          <option value="UG">Uganda</option>
+          <option value="RW">Rwanda</option>
+          <option value="TZ">Tanzania</option>
+        </select>
+        <a class="btn btn--primary btn--small" href="#join">Join waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Every load finds a&nbsp;truck.</h1>
+          <p class="lead">Post your cargo, get offers from verified truck owners, and pay with <span data-momo>M-Pesa</span>. The money is held until your goods arrive.</p>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#join" data-role="shipper">Post a load</a>
+            <a class="btn" href="#join" data-role="owner">List your truck</a>
+          </div>
+          <p class="hero-note">Opening first on the Mombasa to Nairobi route. Join the waitlist for early access.</p>
+        </div>
+
+        <form class="waybill" id="estimator" novalidate aria-labelledby="est-title">
+          <span class="stamp" aria-hidden="true">Estimate only</span>
+          <h2 id="est-title">Check a price</h2>
+          <div class="waybill-fields">
+            <div class="field">
+              <label for="from">From</label>
+              <select id="from" name="from"></select>
+            </div>
+            <div class="field">
+              <label for="to">To</label>
+              <select id="to" name="to"></select>
+            </div>
+            <div class="field">
+              <label for="cargo">What are you moving?</label>
+              <select id="cargo" name="cargo"></select>
+            </div>
+            <div class="field">
+              <label for="weight">Weight in tonnes</label>
+              <input id="weight" name="weight" type="number" inputmode="decimal" min="0.1" max="500" step="0.5" value="12">
+            </div>
+          </div>
+          <div class="check">
+            <input id="flex" name="flex" type="checkbox">
+            <label for="flex">My dates are flexible, a returning truck can carry it</label>
+          </div>
+
+          <div class="waybill-result">
+            <div class="result-head">
+              <span class="result-label">Typical price</span>
+              <label class="visually-hidden" for="currency">Currency</label>
+              <select id="currency" class="select-compact" autocomplete="off">
+                <option>KES</option>
+                <option>UGX</option>
+                <option>RWF</option>
+                <option>TZS</option>
+                <option>USD</option>
+              </select>
+            </div>
+            <output id="est-range" class="price" for="from to cargo weight flex currency">KES 0</output>
+            <p id="est-meta" class="result-meta" aria-live="polite"></p>
+          </div>
+          <a class="btn btn--dark btn--block" id="est-post" href="#join" data-role="shipper">Post this load</a>
+          <p class="fineprint">A guide based on distance, weight and cargo. Real offers come from truck owners.</p>
+        </form>
+      </div>
+      <div class="roadline" aria-hidden="true">
+        <svg class="truck" viewBox="0 0 120 56" focusable="false">
+          <rect x="2" y="6" width="78" height="34" rx="3" fill="#0e5c3f"/>
+          <path d="M16 31V17l10 9 10-9v14" fill="none" stroke="#f1f2ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="26" cy="26" r="2.6" fill="#f0661a"/>
+          <path d="M84 16h18l14 15v11H84z" fill="#1b1f22"/>
+          <path d="M90 21h10l8 10H90z" fill="#f1f2ee"/>
+          <circle cx="22" cy="44" r="8" fill="#1b1f22"/><circle cx="22" cy="44" r="3" fill="#f0661a"/>
+          <circle cx="58" cy="44" r="8" fill="#1b1f22"/><circle cx="58" cy="44" r="3" fill="#f0661a"/>
+          <circle cx="100" cy="44" r="8" fill="#1b1f22"/><circle cx="100" cy="44" r="3" fill="#f0661a"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band band--dark" id="how">
+      <div class="wrap">
+        <h2 class="section-title">From posted to paid in five steps</h2>
+        <ol class="steps">
+          <li>
+            <h3>Post the load</h3>
+            <p>Say what it is, how heavy, and where it goes.</p>
+          </li>
+          <li>
+            <h3>Get offers</h3>
+            <p>Verified truck owners on your route accept your price or counter it.</p>
+          </li>
+          <li>
+            <h3>Pay into escrow</h3>
+            <p>Pay with <span data-momo>M-Pesa</span>. Mzigo Hub holds the money.</p>
+          </li>
+          <li>
+            <h3>Track the trip</h3>
+            <p>Follow the truck from a link. Share it with the receiver.</p>
+          </li>
+          <li>
+            <h3>Confirm delivery</h3>
+            <p>The receiver confirms. The owner is paid. Both sides leave a rating.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band" id="loads">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">See how loads look on the board</h2>
+          <p class="section-sub">These are sample loads, not live jobs. Prices come from the same estimate as the price check, shown in your currency.</p>
+        </div>
+        <fieldset class="chips">
+          <legend class="visually-hidden">Show loads for</legend>
+          <label class="chip"><input type="radio" name="boardCountry" value="all" checked><span>All countries</span></label>
+          <label class="chip"><input type="radio" name="boardCountry" value="KE"><span>Kenya</span></label>
+          <label class="chip"><input type="radio" name="boardCountry" value="UG"><span>Uganda</span></label>
+          <label class="chip"><input type="radio" name="boardCountry" value="RW"><span>Rwanda</span></label>
+          <label class="chip"><input type="radio" name="boardCountry" value="TZ"><span>Tanzania</span></label>
+        </fieldset>
+        <ul class="board" id="board-list"></ul>
+        <p class="board-empty" id="board-empty" hidden>No sample loads for this country yet. Join the waitlist and tell us your route.</p>
+      </div>
+    </section>
+
+    <section class="band band--green" id="owners">
+      <div class="wrap owners-grid">
+        <div>
+          <h2 class="section-title">Never drive home empty</h2>
+          <p class="lead">Truck owners see loads on their route, including the way back. Accept or counter from your phone, and get paid when delivery is confirmed.</p>
+          <ul class="tick-list tick-list--light">
+            <li>Loads matched to where your truck is heading</li>
+            <li>Offers on WhatsApp first. SMS and USSD follow, so a basic phone works too</li>
+            <li>Trip history and earnings in one place, made for owners with one to three trucks</li>
+            <li>Paid to <span data-momo>M-Pesa</span> after the receiver confirms</li>
+          </ul>
+          <a class="btn btn--primary" href="#join" data-role="owner">List your truck</a>
+        </div>
+
+        <div class="phone" role="img" aria-label="Example WhatsApp conversation. Mzigo Hub offers a 12 tonne load from Nairobi to Kampala for KES 125,500. The driver replies 1 to accept. Mzigo Hub confirms pickup and says payment is held until delivery.">
+          <div class="phone-bar">
+            <img src="assets/logo-mark.svg" width="30" height="30" alt="">
+            <span>Mzigo Hub</span>
+          </div>
+          <div class="chat" aria-hidden="true">
+            <p class="bubble bubble--in">New load: Nairobi to Kampala, 12 t general cargo. Offer KES 125,500. Reply 1 to accept or 2 to counter.</p>
+            <p class="bubble bubble--out">1</p>
+            <p class="bubble bubble--in">Accepted. Pickup Thursday 7am, Industrial Area. Payment is held until delivery is confirmed.</p>
+            <p class="bubble bubble--in">Send a photo of the signed delivery note when you arrive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="routes">
+      <div class="wrap routes-grid">
+        <div>
+          <h2 class="section-title">Built around the Northern Corridor</h2>
+          <p class="lead">The road from Mombasa through Nairobi and Kampala to Kigali is the main freight route to Uganda, Rwanda and beyond. We start on it, then add Kisumu, Arusha and Dar es Salaam.</p>
+          <p class="fineprint">Approximate road distances. Border posts are shown as orange squares.</p>
+        </div>
+        <ol class="route" aria-label="Northern Corridor stops">
+          <li><strong>Mombasa</strong><span class="leg">480 km</span></li>
+          <li><strong>Nairobi</strong><span class="leg">160 km</span></li>
+          <li><strong>Nakuru</strong><span class="leg">150 km</span></li>
+          <li><strong>Eldoret</strong><span class="leg">120 km</span></li>
+          <li class="is-border"><strong>Malaba</strong> <span class="where">Kenya and Uganda border</span><span class="leg">230 km</span></li>
+          <li><strong>Kampala</strong><span class="leg">430 km</span></li>
+          <li class="is-border"><strong>Katuna</strong> <span class="where">Uganda and Rwanda border</span><span class="leg">80 km</span></li>
+          <li><strong>Kigali</strong></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band band--tint" id="trust">
+      <div class="wrap trust-grid">
+        <div>
+          <h2 class="section-title">Know who is carrying your goods</h2>
+          <p class="lead">A truck can only be listed after we check:</p>
+          <ul class="tick-list">
+            <li>The owner's national ID or passport</li>
+            <li>The vehicle logbook</li>
+            <li>Valid insurance</li>
+            <li>The driver's licence</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="section-title">Your money waits for the delivery</h2>
+          <p class="lead">You pay into escrow when you accept an offer. The owner is paid once the receiver confirms delivery. If there is a problem, the payment stays on hold while it is reviewed.</p>
+          <p>Free to post a load. A small commission applies to completed trips, and you see it before you accept.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--dark" id="join">
+      <div class="wrap join-grid">
+        <div>
+          <h2 class="section-title">Get early access</h2>
+          <p class="lead">Tell us who you are and we will message you when your route opens.</p>
+        </div>
+
+        <form class="join-form" id="join-form" novalidate>
+          <fieldset class="seg">
+            <legend>I am a</legend>
+            <div class="seg-options">
+              <label><input type="radio" name="role" value="shipper" checked><span>Shipper</span></label>
+              <label><input type="radio" name="role" value="owner"><span>Truck owner</span></label>
+              <label><input type="radio" name="role" value="driver"><span>Driver</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone or WhatsApp number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+254 7XX XXX XXX" required>
+          </div>
+          <div class="field">
+            <label for="joinCountry">Country</label>
+            <select id="joinCountry" name="country" autocomplete="off">
+              <option value="Kenya">Kenya</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Rwanda">Rwanda</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Other">Another country</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="details">Your route or fleet</label>
+            <textarea id="details" name="details" rows="3" placeholder="For example: Mombasa to Nairobi, 28 tonne loads every week"></textarea>
+          </div>
+          <div class="trap" aria-hidden="true">
+            <label for="website">Leave this empty</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Join the waitlist</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="fineprint">We use your details only to contact you about Mzigo Hub. <a href="privacy.html">Read the privacy note</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top" aria-label="Mzigo Hub, back to top">
+        <img src="assets/logo-mark.svg" width="34" height="34" alt="">
+        <span class="brand-name">Mzigo Hub</span>
+      </a>
+      <p class="fineprint">Mzigo means load in Swahili. Price estimates are a guide and not a quote.</p>
+      <nav aria-label="Footer">
+        <a href="#how">How it works</a>
+        <a href="#loads">Load board</a>
+        <a href="#join">Join waitlist</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+      <p class="fineprint">&copy; <span id="year">2026</span> Mzigo Hub</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/pricing.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
