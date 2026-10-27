@@ -7,8 +7,8 @@
     // Waitlist form. Create a free form at formspree.io (or a similar service)
     // and paste its URL here, e.g. "https://formspree.io/f/abcdwxyz".
     // Leave empty and the form opens an email draft instead.
-    formEndpoint: "",
-    contactEmail: "hello@mzigohub.com",
+    formEndpoint: "https://formspree.io/f/xeaagdnl",
+    contactEmail: "",
 
     // Approximate value of 1 Kenyan shilling in each currency. Update when rates move.
     ratePerKES: { KES: 1, UGX: 28, RWF: 11, TZS: 20, USD: 0.0077 },
