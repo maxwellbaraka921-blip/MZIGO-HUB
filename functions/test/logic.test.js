@@ -182,8 +182,13 @@ test("daraja: security credential decrypts with the matching private key", () =>
     const cert = fs.readFileSync(path.join(dir, "c.pem"), "utf8");
     const key = fs.readFileSync(path.join(dir, "k.pem"), "utf8");
     const out = daraja.securityCredential("TestPassword1!", cert);
-    const plain = crypto.privateDecrypt({ key, padding: crypto.constants.RSA_PKCS1_PADDING }, Buffer.from(out, "base64")).toString();
-    assert.equal(plain, "TestPassword1!");
+    // Newer Node 20 releases refuse PKCS#1 v1.5 decryption (a security fix), so decrypt raw and unpad by hand.
+    const raw = crypto.privateDecrypt({ key, padding: crypto.constants.RSA_NO_PADDING }, Buffer.from(out, "base64"));
+    assert.equal(raw[0], 0x00);
+    assert.equal(raw[1], 0x02); // PKCS#1 v1.5 encryption block
+    const end = raw.indexOf(0x00, 2);
+    assert.ok(end >= 10, "padding string must be at least 8 bytes");
+    assert.equal(raw.subarray(end + 1).toString(), "TestPassword1!");
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
