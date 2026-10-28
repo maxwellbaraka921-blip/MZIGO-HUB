@@ -1,0 +1,20 @@
+rules_version = '2';
+
+// Truck documents (ID, logbook, insurance, licence).
+// Owners can upload to their own folder. Admins view them through short-lived links made by the backend.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /truckdocs/{uid}/{file=**} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null
+                    && request.auth.uid == uid
+                    && request.resource.size < 5 * 1024 * 1024
+                    && (request.resource.contentType.matches('image/.*')
+                        || request.resource.contentType == 'application/pdf');
+      allow update, delete: if false;
+    }
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

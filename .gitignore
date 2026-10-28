@@ -2,3 +2,9 @@
 Thumbs.db
 node_modules/
 *.zip
+functions/node_modules/
+functions/.env*
+functions/.secret.local
+.firebase/
+firebase-debug.log
+firebase-debug*.log

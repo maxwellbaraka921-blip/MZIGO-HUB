@@ -51,6 +51,10 @@ Watch progress in the **Actions** tab.
 
 The site uses relative links, so it works at both the `github.io/mzigo-hub/` address and a custom domain. The 404 page uses absolute paths, so it works fully only on a custom domain or a `YOUR-USERNAME.github.io` root repository.
 
+## Accounts, auto-accept and M-Pesa payments
+
+The code for these is included. Follow **BACKEND-SETUP.md** to switch it on. Until then the site works as a landing page and waitlist, and the Sign in link stays hidden.
+
 ## Make the waitlist form work
 
 By default the form opens an email draft. To collect sign-ups properly:
@@ -77,6 +81,9 @@ Route distances live in `js/pricing.js`. To add a city or road, add it to `PLACE
 
 ```
 index.html          the page
+app.html            accounts, loads, trucks and payments (needs the backend)
+functions/          the backend (Firebase Cloud Functions)
+BACKEND-SETUP.md    how to switch the backend on
 privacy.html        privacy note (draft)
 404.html            page not found
 css/styles.css      all styles

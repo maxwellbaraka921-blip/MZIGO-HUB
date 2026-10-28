@@ -1,0 +1,40 @@
+rules_version = '2';
+
+// Browsers may only READ, and only what they should see.
+// Every change to money, loads, trucks and accounts is made by the backend functions.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /trucks/{id} {
+      allow read: if signedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Open loads are the public load board for signed-in users. They hold no phone numbers.
+    match /loads/{id} {
+      allow read: if signedIn() && (
+        resource.data.status == 'open' ||
+        resource.data.shipperId == request.auth.uid ||
+        resource.data.ownerId == request.auth.uid
+      );
+      allow write: if false;
+    }
+
+    // Holds the delivery code. Only the shipper can see it.
+    match /loads_private/{id} {
+      allow read: if signedIn() && resource.data.shipperId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /payments/{id} {
+      allow read, write: if false;
+    }
+  }
+}

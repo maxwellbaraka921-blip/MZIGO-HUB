@@ -299,6 +299,9 @@
     $("#join-form").addEventListener("submit", handleSubmit);
     wireRoleLinks();
 
+    var fb = window.MZIGO_FIREBASE;
+    if (fb && fb.enabled && fb.config && fb.config.apiKey) $("#app-link").hidden = false;
+
     $("#year").textContent = new Date().getFullYear();
   }
 
